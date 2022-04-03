@@ -1,12 +1,6 @@
-# mechain
-
 # 1 监督学习和无监督学习
 
 **Machine Learning definition**
-
-Machine Learning: Field of study that gives computers the ability to learn without being explicitly programmed.
-
-<p align="right">——Arthur Samuel（1959）</p>
 
 Well-posed Learning Problem: A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by p, improves with experience E.
 
@@ -18,35 +12,18 @@ Well-posed Learning Problem: A computer program is said to learn from experience
 
 在监督学习中，给出一个数据集，且每个样本都指出正确答案，使用算法预测出“正确答案”。
 
-Supervised Learning: We gave the algorithm a data set，in which the right answers were given. The task of the algorithm was to just produce more of these right answers.
-
 - Regression: Predict continuous valued output（回归问题：预测一个连续值输出）
 - Classification: Discrete valued output（分类问题：预测离散值输出）
 
 ### 1.1.1 回归问题"regression"
 
-![image.png](E:\Code\DeepLearning\image\1-1.jpg)
-
 已知数据元素学习时间和测试分数，简单拟合出一个一元函数。拟合出公式之后，随意给出一个数据即可预测出对应的另一个数据，比如已知考75分可以推测复习的3h左右，已知复习3h可以推测出考75分左右。
 
 ### 1.1.2 离散问题"classification"
 
-![image.png](E:\Code\DeepLearning\image\1-2.png)
 已知不同的身高体重和性别，图中明显看出由于身高体重不同而划分出的性别差异。之后给定一个身高体重数据便可以推测其性别。
 
-**例题：**
-
-You're running a company and you want to develop learning algorithms to address each of two problems 
-
-Problem 1：You have a large inventory of identical items. You want to predict how many of these items will sell over the next 3 months 
-
-Problem 2：Youd like software to examine individual customer accounts and for each account decide if it has been hacked /compromised
-
-> 答案： Treat problem 1 as a regression problem, problem 2 as a classification problem.
-
-p1预测销量，肯定是对历史销量数据进行拟合从而得到一个曲线模型而进行预测，因此是回归问题。
-
-p2检测账号，数据是离散的，安全或者不安全，因此是分类问题。
+![](https://github.com/LolitaSian/DeepLearningNotes/raw/master/AndrewNg/image/1-1.jpg)
 
 ## 1.2 无监督学习 Unsupervised Learning
 
@@ -58,241 +35,15 @@ In Unsupervised Learning, the data that doesn't have any labels,or that all has 
 
 - clustering algorithm 聚类
   
-  将数据进行聚类，作为一个曾经的生物学学生，我第一反应就是聚类在生信中应用及其广泛。生信中的聚类，给定DNA序列，就可以自动划分为不同的物种。下图为一个热图。
-  
-  ![image.png](E:\Code\DeepLearning\image\1-3.png)
+  将数据进行聚类，作为一个曾经的生物学学生，我第一反应就是聚类在生信中应用及其广泛。生信中的聚类，给定DNA序列，就可以自动划分为不同的物种。
 
 - Non-clustering The "Cocktail Party Algorithm"
 
-**例题：**
 
-Of the following examples, which would you address using an unsupervised learning algorithm？
-
-- Given email labeled as spam/ not spam learn a spam filter
-
-- Given a set of news articles found on the web, group them into set of articles about the same story 
-
-- Given a database of customer data, automatically discover market segments and group customers into different market segments 
-
-- Given a dataset of patients diagnosed as either having diabetes or not, learn to classify new patients as having diabetes or not.
-
-> 答案：
-> 
-> - Given a set of news articles found on the web, group them into set of articles about the same story 
-> - Given a database of customer data, automatically discover market segments and group customers into different market segments 
-
-1.区分是否是垃圾邮件：监督学习-离散
-
-4.区分病人是否患糖尿病：监督学习-离散
-
-# 2 线性代数
-
-## 2.1 向量和矩阵 matrices and vectors
-
-- A matrix is a rectangular array of numbers written between square brackets. 
-  
-  - 矩阵是写在方括号中的数字矩形阵列。
-  - Dimension of matrix： number of rows x number of columns
-    - 矩阵的维数：行×列
-    - $\R^{m×n}$
-  - Matrix Elements（entries of matrix）（矩阵元素）：$A_{ij}$ = i,j entry in the ith row, jth column
-  - 同济教材：![image.png](E:\Code\DeepLearning\image\1-4.png)
-
-- A vector is a matrix that has only 1 columns.
-  
-  - 向量是只有一列的矩阵（狭义上的向量，是我们认知范围里的列向量，注意区分）
-  - Dimension of vector: number of rows
-    - 矩阵的维数：行
-    - $\R^{m}$
-  - element of the vectory（向量元素）：$y_{i}$
-  - 同济教材定义：![image.png](E:\Code\DeepLearning\image\1-5.png)
-
-**<font color=red>注意</font>**
-
-这里涉及到一个**1-indexed 0-indexed**的问题。在计算机中为了方便处理通常是下标从0开始，但是学习习惯中我们通常是从1开始。本学习笔记中提到的矩阵和向量，如果不是做出特殊标注，都默认是1-indexed写法。
-
-![image.png](E:\Code\DeepLearning\image\1-6.png)
-
----
-
-## 2.2 加法 matrix addition
-
-把两个矩阵对应位置上的元素相加即可。
-
-矩阵的维数要相同（行数列数要相同），相同位置的两数相加。
-
-$$
-\begin{bmatrix}
-1 & 0 \\
-2 & 5 \\
-3 & 1
-\end{bmatrix}
-+ 
-\begin{bmatrix}
-4 & 0.5 \\
-2 & 5 \\
-0 & 1
-\end{bmatrix}
-
-=
-\begin{bmatrix}
-5 & 0.5 \\
-4 & 10 \\
-3 & 2
-\end{bmatrix}
-$$
-
-行列不相同的话不能相加。
-
-$$
-\begin{bmatrix}
-1 & 0 \\
-2 & 5 \\
-3 & 1
-\end{bmatrix}
-+ 
-\begin{bmatrix}
-4 & 0.5 \\
-2 & 5 
-\end{bmatrix}
-=Error
-$$
-
-## 2.3 标量乘法 Scalar Multiplication
-
-就是数乘矩阵，把矩阵对应位置上的元素乘以给出的数即可。
-
-$$
-3 \times \begin{bmatrix}
-1 & 0 \\
-2 & 5 \\
-3 & 1
-\end{bmatrix}=
-\begin{bmatrix}
-3 & 0 \\
-6 & 15 \\
-9 & 3
-\end{bmatrix}
-$$
-
-$$
-\left[\begin{array}{ll}
-4 & 0 \\
-6 & 3
-\end{array}\right] / 4=\frac{1}{4}\left[\begin{array}{cc}
-4 & 0 \\
-6 & 3
-\end{array}\right]=\left[\begin{array}{cc}
-1 & 0 \\
-\frac{3}{2} & \frac{3}{4}
-\end{array}\right]
-$$
-
-## 2.4 矩阵向量乘法
-
-矩阵和向量相乘。
-矩阵的列数要和向量的行数一样，即$\R_A^{m×n} \times \R_y^{n}$，结果为一个向量，行数和矩阵相同$\R_{result}^{m}$
-矩阵k行的第i个元素和向量的第i个元素相乘然后求和，得出一个新数及结果向量的第k个元素。
-
-m × n matrix（m rows n columns）  ×  n x 1 matrix（n-dimensional vector） = m-dimensional vector
-
-![image.png](E:\Code\DeepLearning\image\1-7.png)
-
-$$
-\left[\begin{array}{ll}
-1 & 3 \\
-4 & 0 \\
-2 & 1
-\end{array}\right] \times {\left[\begin{array}{l}
-1 \\
-5
-\end{array}\right]} = \left[\begin{array}{c}
-16 \\
-4 \\
-7
-\end{array}\right]
-$$
-
-$$
-\begin{array}{l}
-1 \times 1+3 \times 5=16 \\
-4 \times 1+0 \times 5=4 \\
-2 \times 1+1 \times 5=-7
-\end{array}
-$$
-
-**应用**：
-再回到预测房价那个问题，现在假设知道一组房屋大小的数据，并且拟合出了放假曲线为$h_{\theta}(x)=-40+0.25 x$
-
-House sizes：
-
-- 2104
-- 1416
-- 1534
-- 852 
-
-快速得出结论就可以使用向量矩阵相乘。
-因为房屋价格为x，带入公式
-
-$$
-\left[\begin{array}{ll}1 & 2104 \\ 1 & 1416 \\ 1 & 1534 \\ 1 & 852\end{array}\right] 
-\times
-\left[\begin{array}{l}-40 \\ 0.25\end{array}\right]=
-\left[\begin{array}{l}2104 \\ 1416  \\ ... \\ ...\end{array}\right]
-$$
-
-矩阵中第一列为1，因为有个常数项-40，要保留-40，所以第一列为1，第二列为房价x，向量第二行是0.25为x的系数。
-
-## 矩阵乘法
-
-前一个矩阵的列数和后一个矩阵的行数相同。即$\R_A^{m×n} \times \R_B^{n×s}$，结果矩阵行数和前一个相同弄，列数和后一个相同，$\R_{result}^{m×s}$
-
-前一个矩阵i行和后一个矩阵的的第j列元素一次相乘后求和，得出一个新数为结果矩阵第i行第j列。
-
-![image.png](E:\Code\DeepLearning\image\1-9.png)
-
-$$
-\left[\begin{array}{ll}
-1 & 3 \\
-2 & 5
-\end{array}\right]\left[\begin{array}{ll}
-0 & 1 \\
-3 & 2
-\end{array}\right] = \left[\begin{array}{l}
-1 \times 0+3 \times 3 & 1 \times 1+3 \times 2 \\
-2 \times 0+5 \times 3 & 2 \times 1+5 \times 2
-\end{array}\right]
-= 
-\left[\begin{array}{ll}
-9 & 4 \\
-15 & 12
-\end{array}\right]
-$$
-
-**应用**：从矩阵乘向量那里房价的例子已经熟悉了怎么应用，而矩阵相乘则可以同时计算好几条拟合曲线。
-
-![image.png](E:\Code\DeepLearning\image\1-10.png)
-
-**注意**：
-
-矩阵相乘没有交换律，$A \times B \neq B \times A$
-
-矩阵相乘可以用结合律，$A \times B \times C = A \times （B \times C）$
-
-## 2.5 逆 matrix inverse
-
-matrix inverse：If A is an m × m matrix（square matrix）, and if it has an inverse $AA^{-1}= A^{-1}A=I$
-可逆矩阵的定义：A是方阵，并且A和A逆的乘积=A逆乘A=单位矩阵I
-
-**备注**：还记得单位矩阵吗，就是除了对角线元素是1，其余元素都是0。
-
-## 2.6 转置 Matrix transpose
-
-转置就是行变列，列变行。A的转置记作$A^T$
 
 # 3 单变量线性回归 Linear Regression with One Variable
 
-首先继续说房价预测这个问题。
+首先继续说房价测这个问题。
 
 已知数据有房屋面积以及对应的价格。
 
@@ -303,8 +54,6 @@ matrix inverse：If A is an m × m matrix（square matrix）, and if it has an i
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a4956d362a5b446a860a30b0f86a8ae0~tplv-k3u1fbpfcp-watermark.image)
 
 由上图可以预测，如果有一套房子的面积为1250feet²，那预测其价格应该在$220 000左右。
-
----
 
 ## 3.1 一些概念
 
@@ -471,11 +220,12 @@ $J\left(\theta_{1}\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(
 
 repeat until convergence \{ 
 
-$$ \theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial \theta_{j}} J\left(\theta_{0}, \theta_{1}\right) \quad(\text { for } j=0 \text { and } j=1) $$
+$$\theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial \theta_{j}} J\left(\theta_{0}, \theta_{1}\right) \quad(\text { for } j=0 \text { and } j=1)$$
 
 }
 
 Correct: Simultaneous update
+
 $$
 \begin{aligned}
 &\text { temp0 }:=\theta_{0}-\alpha \frac{\partial}{\partial \theta_{0}} J\left(\theta_{0}, \theta_{1}\right) \\
@@ -1881,20 +1631,26 @@ $h_{\Theta}(x)=a^{(3)}=g\left(z^{(3)}\right)$
 
 $h_{\Theta}(x) \in \mathbb{R}^{K} \quad\left(h_{\Theta}(x)\right)_{i}=i^{t h}$ output
 $J(\Theta)=-\frac{1}{m}\left[\sum_{i=1}^{m} \sum_{k=1}^{K} y_{k}^{(i)} \log \left(h_{\Theta}\left(x^{(i)}\right)\right)_{k}+\left(1-y_{k}^{(i)}\right) \log \left(1-\left(h_{\Theta}\left(x^{(i)}\right)\right)_{k}\right)\right]$
-$+\frac{\lambda}{2 m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_{l}} \sum_{j=1}^{s_{l+1}}\left(\Theta_{j i}^{(l)}\right)^{2}$
+
+$+\frac{\lambda}{2 m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_{l}}\sum_{j=1}^{s_{l+1}}\left(\Theta_{j i}^{(l)}\right)^{2}$
+
 $$
 \min _{\Theta} J(\Theta)
 $$
+
 Need code to compute:
+
 $$
 \begin{aligned}
 &J(\Theta) \\
 &\frac{\partial}{\partial \Theta_{i j}^{(l)}} J(\Theta)=a_j^{(l)}\delta_j^{(l+1)}
 \end{aligned}
 $$
+
 **Gradient computation**
 Given one training example $(x, y)$ :
 Forward propagation:
+
 $$
 \begin{aligned}
 a^{(1)} &=x \\
@@ -1906,6 +1662,7 @@ z^{(4)} &=\Theta^{(3)} a^{(3)} \\
 a^{(4)} &=h_{\Theta}(x)=g\left(z^{(4)}\right)
 \end{aligned}
 $$
+
 对于前向传播，假设现在只有一个训练样本$(x,y)$，最后计算出的$h(x)$就是$a^{(4)}$。
 
 为了计算导数值我们需要后向传播。反向传播得名于我们要从输出层开始从后往前计算$\delta$的值。就是把输出层的误差进行反向传播给倒数第一层，然后再传给倒数第二层，以此类推。
@@ -1960,6 +1717,7 @@ $\begin{aligned}
  $\theta=\theta_{1}, \theta_{2}, \theta_{3}, \ldots, \theta_{n}$
 
 此时的近似求导就是：
+
 $$
 \begin{gathered}
 \frac{\partial}{\partial \theta_{1}} J(\theta) \approx \frac{J\left(\theta_{1}+\epsilon, \theta_{2}, \theta_{3}, \ldots, \theta_{n}\right)-J\left(\theta_{1}-\epsilon, \theta_{2}, \theta_{3}, \ldots, \theta_{n}\right)}{2 \epsilon} \\
@@ -1968,6 +1726,7 @@ $$
 \frac{\partial}{\partial \theta_{n}} J(\theta) \approx \frac{J\left(\theta_{1}, \theta_{2}, \theta_{3}, \ldots, \theta_{n}+\epsilon\right)-J\left(\theta_{1}, \theta_{2}, \theta_{3}, \ldots, \theta_{n}-\epsilon\right)}{2 \epsilon}
 \end{gathered}
 $$
+
 这样你就可以估计代价函数J关于所有参数的偏导数。
 
 注意：梯度检验的主要作用是确定你反向传播求的D的正确性，计算量非常大，所以在你梯度检验完确定反向传播没问题之后记得关闭它。
