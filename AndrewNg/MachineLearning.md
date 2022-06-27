@@ -23,15 +23,11 @@ Well-posed Learning Problem: A computer program is said to learn from experience
 
 已知不同的身高体重和性别，图中明显看出由于身高体重不同而划分出的性别差异。之后给定一个身高体重数据便可以推测其性别。
 
-![](https://github.com/LolitaSian/DeepLearningNotes/raw/master/AndrewNg/image/1-1.jpg)
+![](https://github.com/LolitaSian/DeepLearningNotes/raw/master/AndrewNg/image/1-1.png)
 
 ## 1.2 无监督学习 Unsupervised Learning
 
-Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.
-
 在无监督学习中，给出数据集，不进行数据区分。程序自动对输入的数据进行分类或分群，以寻找数据的模型和规律。
-
-In Unsupervised Learning, the data that doesn't have any labels,or that all has the same labels or really no labels.
 
 - clustering algorithm 聚类
   
@@ -39,15 +35,11 @@ In Unsupervised Learning, the data that doesn't have any labels,or that all has 
 
 - Non-clustering The "Cocktail Party Algorithm"
 
-
-
-# 3 单变量线性回归 Linear Regression with One Variable
+# 2 单变量线性回归 Linear Regression with One Variable
 
 首先继续说房价测这个问题。
 
 已知数据有房屋面积以及对应的价格。
-
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/23610ff2e31644a8963ee75ee4c731a4~tplv-k3u1fbpfcp-watermark.image)
 
 经过算法处理，这些数据更适合拟合成一条一元函数的直线。得出结果如下：
 
@@ -56,8 +48,6 @@ In Unsupervised Learning, the data that doesn't have any labels,or that all has 
 由上图可以预测，如果有一套房子的面积为1250feet²，那预测其价格应该在$220 000左右。
 
 ## 3.1 一些概念
-
-In supervised learning, we have a data set and this data set is called a training set.
 
 在监督学习中我们有一个数据集被称为训练集。
 
@@ -431,11 +421,13 @@ $$
 Hypothesis:
 
  define $x_0=1$
+
 $$
- h_{\theta}(x)=\theta^{T} x=\theta_{0} x_{0}+\theta_{1} x_{1}+\theta_{2} x_{2}+\cdots+\theta_{n} x_{n} 
+h_{\theta}(x)=\theta^{T} x=\theta_{0} x_{0}+\theta_{1} x_{1}+\theta_{2} x_{2}+\cdots+\theta_{n} x_{n} 
 $$
 
 Parameters：n+1-dimension vector
+
 $$
 \theta_{0}, \theta_{1}, \ldots, \theta_{n} 
 $$
